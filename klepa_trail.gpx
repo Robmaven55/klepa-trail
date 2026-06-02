@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Klepa Trail Expedition Guide">
+  <metadata>
+    <name>Klepa Trail</name>
+    <desc>Hike from Monastery Archangel Michael to Klepa Peak</desc>
+  </metadata>
+  <trk>
+    <name>Monastery to Klepa Peak</name>
+    <trkseg>
+      <trkpt lat="41.5637" lon="21.8656">
+        <ele>600</ele>
+        <name>Monastery Archangel Michael</name>
+      </trkpt>
+      <trkpt lat="41.57833" lon="21.83611">
+        <ele>459</ele>
+        <name>Village Dvorishte</name>
+      </trkpt>
+      <trkpt lat="41.570095" lon="21.814148">
+        <ele>1150</ele>
+        <name>Klepa Peak</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

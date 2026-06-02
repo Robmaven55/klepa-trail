@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="mk" data-lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>КЛЕПА ПАТЕКА — Водич за Експедиција 2026</title>
+  <meta name="description" content="Официјален водич за патеката Клепа — Манастир Архангел Михаил до врвот Клепа (1150м), Македонија." />
+  <meta http-equiv="Content-Language" content="mk" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest: #1a3a2a;
+      --forest-mid: #2d5a3d;
+      --forest-light: #4a8b5e;
+      --gold: #d4a017;
+      --gold-light: #f0c040;
+      --stone: #8b7355;
+      --stone-light: #c4a882;
+      --sky: #1a2a4a;
+      --sky-mid: #2a4a7a;
+      --cream: #f5f0e8;
+      --warm-white: #fdfaf5;
+      --danger: #c0392b;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0d1a12; color: var(--warm-white); overflow-x: hidden; }
+
+    /* ── LANG TOGGLE ─────────────────────────── */
+    .lang-toggle {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 3px;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.45);
+      transition: all 0.25s;
+      font-family: 'Outfit', sans-serif;
+    }
+    .lang-btn.active {
+      background: var(--gold);
+      color: #1a1a00;
+    }
+
+    /* ── HERO ───────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(13,26,18,0.85) 70%, #0d1a12 100%),
+        url('images/klepa_hero_03_realistic_panorama.png') center/cover no-repeat;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 2rem; position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(212,160,23,0.15); border: 1px solid var(--gold);
+      color: var(--gold-light); font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; padding: 0.5rem 1.2rem; border-radius: 100px;
+      margin-bottom: 1.5rem; animation: fadeInDown 0.8s ease both;
+    }
+    .hero h1 {
+      font-family: 'Outfit', sans-serif; font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 900; line-height: 0.95; letter-spacing: -0.02em;
+      color: var(--warm-white); text-shadow: 0 4px 40px rgba(0,0,0,0.6);
+      animation: fadeInUp 0.9s ease 0.1s both;
+    }
+    .hero h1 span { display: block; color: var(--gold-light); font-size: 0.5em; letter-spacing: 0.15em; font-weight: 700; }
+    .hero-sub { margin-top: 1.5rem; font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 540px; line-height: 1.6; animation: fadeInUp 1s ease 0.2s both; }
+    .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap; justify-content: center; animation: fadeInUp 1s ease 0.35s both; }
+    .hero-stat { text-align: center; }
+    .hero-stat .val { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 900; color: var(--gold-light); display: block; line-height: 1; }
+    .hero-stat .lbl { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
+    .hero-cta { margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fadeInUp 1s ease 0.45s both; }
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: rgba(255,255,255,0.4); font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; animation: bounce 2s infinite;
+    }
+    .scroll-hint::after { content: '↓'; font-size: 1.2rem; }
+
+    /* ── BUTTONS ─────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 2rem; border-radius: 100px;
+      font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem;
+      letter-spacing: 0.05em; text-decoration: none; transition: all 0.3s ease;
+      cursor: pointer; border: none;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #1a1a00; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,160,23,0.4); }
+    .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--warm-white); }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
+
+    /* ── NAV ─────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,26,18,0.95); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; display: flex; align-items: center;
+      gap: 0; overflow-x: auto; scrollbar-width: none;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-logo { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1rem; color: var(--gold-light); white-space: nowrap; margin-right: 1.5rem; padding: 1rem 0; }
+    nav a { display: inline-block; padding: 1rem 0.85rem; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.04em; white-space: nowrap; transition: color 0.2s; border-bottom: 2px solid transparent; }
+    nav a:hover { color: var(--warm-white); border-bottom-color: var(--gold); }
+
+    /* ── SECTIONS ────────────────────────────── */
+    section { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--gold); }
+    h2 { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: var(--warm-white); }
+
+    /* ── TIMELINE ────────────────────────────── */
+    #timeline { background: #0d1a12; }
+    .timeline-grid { display: grid; gap: 0; margin-top: 3rem; position: relative; }
+    .timeline-grid::before { content: ''; position: absolute; left: 3.5rem; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--gold), transparent); }
+    .timeline-item { display: grid; grid-template-columns: 7rem 1fr; gap: 1.5rem; padding: 1.5rem 0; position: relative; cursor: pointer; }
+    .timeline-time { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); text-align: right; padding-top: 0.2rem; position: relative; }
+    .timeline-time::after { content: ''; position: absolute; right: -1.9rem; top: 0.55rem; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid #0d1a12; box-shadow: 0 0 0 2px var(--gold); }
+    .timeline-content { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.2rem 1.5rem; transition: all 0.3s ease; }
+    .timeline-item:hover .timeline-content { background: rgba(255,255,255,0.07); border-color: rgba(212,160,23,0.3); transform: translateX(4px); }
+    .timeline-content h3 { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--warm-white); margin-bottom: 0.3rem; }
+    .timeline-content p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .timeline-tag { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 100px; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .tag-drive { background: rgba(42,74,122,0.4); color: #6bb3f5; border: 1px solid rgba(107,179,245,0.3); }
+    .tag-base { background: rgba(74,139,94,0.3); color: #7ecf9a; border: 1px solid rgba(126,207,154,0.3); }
+    .tag-hike { background: rgba(212,160,23,0.2); color: var(--gold-light); border: 1px solid rgba(212,160,23,0.3); }
+    .tag-pause { background: rgba(139,115,85,0.3); color: var(--stone-light); border: 1px solid rgba(196,168,130,0.3); }
+    .tag-summit { background: rgba(192,57,43,0.25); color: #f5856e; border: 1px solid rgba(192,57,43,0.4); }
+    .tag-lunch { background: rgba(155,89,182,0.25); color: #c9a8f5; border: 1px solid rgba(155,89,182,0.4); }
+
+    /* ── ELEVATION ───────────────────────────── */
+    #elevation { background: linear-gradient(180deg, #0d1a12 0%, #0a1520 50%, #0d1a12 100%); }
+    .elev-chart-wrap { background: rgba(15,30,45,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; margin-top: 2.5rem; position: relative; overflow: hidden; }
+    .elev-chart-wrap::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(74,139,94,0.08) 0%, transparent 70%); pointer-events: none; }
+    .elev-svg-container { width: 100%; overflow: hidden; }
+    svg.elev { width: 100%; height: auto; display: block; }
+    .waypoints-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-top: 2rem; }
+    .waypoint-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; text-align: center; transition: all 0.3s; }
+    .waypoint-card:hover { border-color: rgba(212,160,23,0.4); background: rgba(212,160,23,0.06); transform: translateY(-3px); }
+    .waypoint-card .elev-num { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--gold-light); }
+    .waypoint-card .elev-m { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    .waypoint-card .elev-name { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 0.4rem; line-height: 1.3; }
+    .waypoint-card .elev-dot { width: 10px; height: 10px; border-radius: 50%; margin: 0.5rem auto; }
+
+    /* ── PAUSE CARDS ─────────────────────────── */
+    #pauses { background: #0d1a12; }
+    .pause-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .pause-card { border-radius: 20px; overflow: hidden; position: relative; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .pause-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+    .pause-card-inner { padding: 2rem; height: 100%; position: relative; z-index: 1; }
+    .pause-card-1 { background: linear-gradient(135deg, #2d1a0a, #4a2d15); border: 1px solid rgba(196,168,130,0.2); }
+    .pause-card-2 { background: linear-gradient(135deg, #0a1a2d, #152a4a); border: 1px solid rgba(107,179,245,0.2); }
+    .pause-card-3 { background: linear-gradient(135deg, #1a0a0a, #3a1515); border: 1px solid rgba(192,57,43,0.3); }
+    .pause-num { font-family: 'Outfit', sans-serif; font-size: 4rem; font-weight: 900; opacity: 0.1; position: absolute; top: 1rem; right: 1.5rem; line-height: 1; color: white; pointer-events: none; }
+    .pause-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .pause-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--warm-white); margin-bottom: 0.3rem; }
+    .pause-elev { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .pause-card p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+    .pause-duration { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .pause-duration::before { content: '⏱'; }
+
+    /* ── DRIVING ─────────────────────────────── */
+    #driving { background: linear-gradient(180deg, #0d1a12 0%, #091520 100%); }
+    .route-steps { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
+    .route-step { display: flex; align-items: flex-start; gap: 1.2rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: rgba(212,160,23,0.15); border: 1.5px solid var(--gold); color: var(--gold); font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-text { flex: 1; padding-top: 0.15rem; }
+    .step-text strong { color: var(--warm-white); font-size: 0.95rem; }
+    .step-text p { color: rgba(255,255,255,0.5); font-size: 0.82rem; margin-top: 0.2rem; }
+    .warning-box { background: rgba(192,57,43,0.1); border: 1px solid rgba(192,57,43,0.3); border-radius: 12px; padding: 1.2rem 1.5rem; margin-top: 2rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .warning-box .warn-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .warning-box p { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .warning-box strong { color: #f5856e; }
+    .map-embed { width: 100%; height: 380px; border-radius: 16px; overflow: hidden; margin-top: 2rem; border: 1px solid rgba(255,255,255,0.1); }
+    .map-embed iframe { width: 100%; height: 100%; border: none; }
+
+    /* ── GEAR ────────────────────────────────── */
+    #gear { background: #0d1a12; }
+    .gear-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+    .gear-item { display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1rem 1.2rem; transition: all 0.25s; cursor: pointer; }
+    .gear-item:hover { background: rgba(74,139,94,0.12); border-color: rgba(74,139,94,0.35); }
+    .gear-item.mandatory { border-left: 3px solid var(--gold); }
+    .gear-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .gear-text strong { display: block; font-size: 0.88rem; color: var(--warm-white); font-weight: 600; }
+    .gear-text span { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+    /* ── MONASTERY ───────────────────────────── */
+    #monastery { background: linear-gradient(180deg, #0d1a12 0%, #0f1e0f 100%); }
+    .monastery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; align-items: start; }
+    .info-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.8rem; }
+    .info-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--warm-white); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .info-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .info-card li { font-size: 0.85rem; color: rgba(255,255,255,0.65); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.5; }
+    .info-card li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+    /* ── EMERGENCY ───────────────────────────── */
+    #emergency { background: #0d1a12; }
+    .emergency-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .emergency-card { background: rgba(192,57,43,0.1); border: 1px solid rgba(192,57,43,0.25); border-radius: 14px; padding: 1.5rem; text-align: center; }
+    .emergency-card .em-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .emergency-card .em-name { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; }
+    .emergency-card .em-num { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 900; color: #f5856e; margin-top: 0.2rem; }
+
+    /* ── FOOTER ──────────────────────────────── */
+    footer { background: #060e08; border-top: 1px solid rgba(255,255,255,0.06); padding: 3rem 2rem; text-align: center; }
+    footer .foot-logo { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 900; color: var(--gold-light); letter-spacing: 0.05em; }
+    footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 0.8rem; }
+
+    /* ── ANIMATIONS ──────────────────────────── */
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-8px); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 768px) {
+      .timeline-grid::before { left: 2.2rem; }
+      .timeline-item { grid-template-columns: 4.5rem 1fr; gap: 1rem; }
+      .timeline-time { font-size: 0.9rem; }
+      .timeline-time::after { right: -1.3rem; }
+      .waypoints-row { grid-template-columns: repeat(3, 1fr); }
+      .monastery-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+    @media (max-width: 480px) { .waypoints-row { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-badge" data-mk="🏔️ Македонија · Општина Градско · 2026" data-en="🏔️ Macedonia · Gradsko Municipality · 2026">🏔️ Македонија · Општина Градско · 2026</div>
+  <h1>КЛЕПА<span data-mk="ПАТЕКА" data-en="TRAIL">ПАТЕКА</span></h1>
+  <p class="hero-sub" data-mk="Од Манастирот Архангел Михаил низ напуштеното село Двориште до врвот на планината Клепа на 1150м" data-en="From Monastery Archangel Michael through the ghost village of Dvorishte to the 1150m summit of Mount Klepa">Од Манастирот Архангел Михаил низ напуштеното село Двориште до врвот на планината Клепа на 1150м</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="val">50</span><span class="lbl" data-mk="Учесници" data-en="Participants">Учесници</span></div>
+    <div class="hero-stat"><span class="val">1150м</span><span class="lbl" data-mk="Врв" data-en="Summit">Врв</span></div>
+    <div class="hero-stat"><span class="val">12км</span><span class="lbl" data-mk="Вкупна патека" data-en="Round Trip">Вкупна патека</span></div>
+    <div class="hero-stat"><span class="val">550м</span><span class="lbl" data-mk="Вкупно искачување" data-en="Total Ascent">Вкупно искачување</span></div>
+    <div class="hero-stat"><span class="val">7/10</span><span class="lbl" data-mk="Тежина" data-en="Difficulty">Тежина</span></div>
+  </div>
+  <div class="hero-cta">
+    <a href="#timeline" class="btn btn-primary" data-mk="📋 Погледни го планот" data-en="📋 View Full Plan">📋 Погледни го планот</a>
+    <a href="https://www.google.com/maps/dir/Skopje,+North+Macedonia/41.5637,21.8656" target="_blank" class="btn btn-outline" data-mk="🗺️ Отвори во Google Maps" data-en="🗺️ Open in Google Maps">🗺️ Отвори во Google Maps</a>
+  </div>
+  <div class="scroll-hint" data-mk="Скролувај за повеќе" data-en="Scroll to explore">Скролувај за повеќе</div>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">⛰ КЛЕПА</div>
+    <a href="#timeline" data-mk="Распоред" data-en="Timeline">Распоред</a>
+    <a href="#elevation" data-mk="Елевација" data-en="Elevation">Елевација</a>
+    <a href="#pauses" data-mk="Паузи" data-en="Pauses">Паузи</a>
+    <a href="#mythology" data-mk="Митологија" data-en="Mythology">Митологија</a>
+    <a href="#driving" data-mk="Патување" data-en="Driving">Патување</a>
+    <a href="#monastery" data-mk="Манастир" data-en="Monastery">Манастир</a>
+    <a href="#gear" data-mk="Опрема" data-en="Gear">Опрема</a>
+    <a href="#emergency" data-mk="Итни" data-en="Emergency">Итни</a>
+    <div class="lang-toggle" style="margin-left:auto">
+      <button class="lang-btn active" id="btn-mk" onclick="setLang('mk')">МК</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ TIMELINE ══════════════════════════════════════════ -->
+<section id="timeline">
+  <div class="reveal">
+    <div class="section-label" data-mk="Целоден план" data-en="Full Day Plan">Целоден план</div>
+    <h2 data-mk="Распоред на денот" data-en="Day Timeline">Распоред на денот</h2>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;max-width:520px" data-mk="Од поаѓањето со конвој од Скопје до вечерното враќање — секоја фаза на експедицијата." data-en="From the Skopje convoy departure to the evening return — every phase of the expedition.">Од поаѓањето со конвој од Скопје до вечерното враќање — секоја фаза на експедицијата.</p>
+  </div>
+  <div class="timeline-grid reveal">
+
+    <div class="timeline-item">
+      <div class="timeline-time">06:30</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-drive" data-mk="🚗 Патување" data-en="🚗 Drive">🚗 Патување</div>
+        <h3 data-mk="Поаѓање од Скопје — Почеток на конвој" data-en="Depart Skopje — Convoy Start">Поаѓање од Скопје — Почеток на конвој</h3>
+        <p data-mk="Сите возила се собираат и тргнуваат во конвој на југ по автопатот А1/Е75. Времетраење на вожњата: ~1ч 15мин + 15мин по земјен пат." data-en="All vehicles gather and depart in convoy south via A1/E75 motorway. Drive time: ~1h 15min + 15min dirt road.">Сите возила се собираат и тргнуваат во конвој на југ по автопатот А1/Е75. Времетраење на вожњата: ~1ч 15мин + 15мин по земјен пат.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">08:00</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-base" data-mk="⛪ База" data-en="⛪ Base">⛪ База</div>
+        <h3 data-mk="Пристигање — Манастир Архангел Михаил" data-en="Arrive — Monastery Archangel Michael">Пристигање — Манастир Архангел Михаил</h3>
+        <p data-mk="Паркирање на отворен терен. Броење на групата. Пауза за тоалет. Делење пакети со ручек (1 по учесник × 50). Брифинг на готвачкиот тим — тие остануваат и готват." data-en="Park in open field. Head count. Restroom break. Distribute lunch packets (1 per person × 50). Chef team briefing — they stay and prepare hot lunch.">Паркирање на отворен терен. Броење на групата. Пауза за тоалет. Делење пакети со ручек (1 по учесник × 50). Брифинг на готвачкиот тим — тие остануваат и готват.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">08:30</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-base" data-mk="📣 Брифинг" data-en="📣 Briefing">📣 Брифинг</div>
+        <h3 data-mk="Ориентација, безбедносен брифинг и тур на Манастирот" data-en="Orientation, Safety Briefing & Monastery Tour">Ориентација, безбедносен брифинг и тур на Манастирот</h3>
+        <p data-mk="Раководителот зборува. Историја на Манастирот (изграден 1861 од Андреја Дамјанов). Преглед на патеката, правила за безбедност, систем на партнери, итни контакти." data-en="Group leader speaks. History of the monastery (built 1861 by Andreja Damjanov). Trail overview, safety rules, buddy system, emergency contacts.">Раководителот зборува. Историја на Манастирот (изграден 1861 од Андреја Дамјанов). Преглед на патеката, правила за безбедност, систем на партнери, итни контакти.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">09:00</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-hike" data-mk="🥾 Пешачење" data-en="🥾 Hike">🥾 Пешачење</div>
+        <h3 data-mk="Почеток на пешачењето — Манастир → Двориште" data-en="Start Hiking — Monastery → Dvorishte">Почеток на пешачењето — Манастир → Двориште</h3>
+        <p data-mk="Почнуваме со искачување од ~600м. Патеката оди нагоре низ медитеранска вегетација и карпест терен кон напуштеното село." data-en="Begin ascent from ~600m. Trail winds upward through Mediterranean-type vegetation and rocky terrain toward the abandoned village.">Почнуваме со искачување од ~600м. Патеката оди нагоре низ медитеранска вегетација и карпест терен кон напуштеното село.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">10:00</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-pause" data-mk="⏸ Пауза 1" data-en="⏸ Pause 1">⏸ Пауза 1</div>
+        <h3 data-mk="Село Двориште — Напуштено (459м)" data-en="Dvorishte Village — Ghost Village (459m)">Село Двориште — Напуштено (459м)</h3>
+        <p data-mk="Пауза од 30 мин. Одмор и истражување на целосно напуштеното камено село. Историска приказна од раководителот. Фотографирање. Броење пред продолжување." data-en="30-minute stop. Rest and explore the completely abandoned stone village. Historical story from group leader. Photo opportunity. Head count before departing.">Пауза од 30 мин. Одмор и истражување на целосно напуштеното камено село. Историска приказна од раководителот. Фотографирање. Броење пред продолжување.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">11:15</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-pause" data-mk="⏸ Пауза 2" data-en="⏸ Pause 2">⏸ Пауза 2</div>
+        <h3 data-mk="Видиковец — Панорамски поглед (800м)" data-en="Panorama Viewpoint (800m)">Видиковец — Панорамски поглед (800м)</h3>
+        <p data-mk="Пауза 20 мин. Панорамски поглед на Стоби, Вардар-Црна конфлуенција, Тиквешкиот регион. Задолжителна групна фотографија со долината во позадина." data-en="20-minute stop. Panoramic views of Stobi, Vardar-Crna confluence, Tikveš region. Mandatory group photo with the valley backdrop.">Пауза 20 мин. Панорамски поглед на Стоби, Вардар-Црна конфлуенција, Тиквешкиот регион. Задолжителна групна фотографија со долината во позадина.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">12:15</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-pause" data-mk="⏸ Пауза 3" data-en="⏸ Pause 3">⏸ Пауза 3</div>
+        <h3 data-mk="Гребен со бункери (1050м)" data-en="Bunker Ridge (1050m)">Гребен со бункери (1050м)</h3>
+        <p data-mk="Пауза 15 мин. Истражување на напуштени југословенски воени бункери. Финална проверка на вода. Карпата на врвот е видлива — мотивациски момент." data-en="15-minute stop. Explore abandoned Yugoslav military bunkers. Final water check. The summit tooth-rock is visible — motivational push for the last 100m.">Пауза 15 мин. Истражување на напуштени југословенски воени бункери. Финална проверка на вода. Карпата на врвот е видлива — мотивациски момент.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">12:30</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-summit" data-mk="🏆 Врв" data-en="🏆 Summit">🏆 Врв</div>
+        <h3 data-mk="ВРВ КЛЕПА — 1150м" data-en="KLEPA PEAK — 1150m">ВРВ КЛЕПА — 1150м</h3>
+        <p data-mk="Прослава на врвот! Групна фотографија на вулканската карпена формација. Панорама на цела Централна Македонија. 30 минути на врвот." data-en="Summit celebration! Group photo at the volcanic rock formation. Panorama of all of central Macedonia. 30 minutes at the top.">Прослава на врвот! Групна фотографија на вулканската карпена формација. Панорама на цела Централна Македонија. 30 минути на врвот.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">13:00</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-hike" data-mk="↓ Спуштање" data-en="↓ Descent">↓ Спуштање</div>
+        <h3 data-mk="Почеток на спуштањето кон Манастирот" data-en="Begin Descent Back to Monastery">Почеток на спуштањето кон Манастирот</h3>
+        <p data-mk="Ист пат во обратна насока. Потребна е претпазливост на карпестите делови. Проценето 2 часа за спуштање." data-en="Same route in reverse. Careful footing required on rocky sections. Estimated 2 hours descent.">Ист пат во обратна насока. Потребна е претпазливост на карпестите делови. Проценето 2 часа за спуштање.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">15:00</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-base" data-mk="🏛 Повраток" data-en="🏛 Return">🏛 Повраток</div>
+        <h3 data-mk="Враќање во Манастирот" data-en="Arrive Back at Monastery">Враќање во Манастирот</h3>
+        <p data-mk="Одмор, освежување. Финално броење. Готвачкиот тим има скоро готов топол ручек." data-en="Rest, freshen up. Final head count. Chef team has hot lunch almost ready.">Одмор, освежување. Финално броење. Готвачкиот тим има скоро готов топол ручек.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">15:15</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-lunch" data-mk="🍽 Ручек" data-en="🍽 Lunch">🍽 Ручек</div>
+        <h3 data-mk="Топол македонски ручек во Манастирот" data-en="Hot Macedonian Feast at the Monastery">Топол македонски ручек во Манастирот</h3>
+        <p data-mk="Традиционален групен ручек: тавче гравче, скара, шопска салата, ајвар и леб, баклава, ракија, вода и сок. Слободно посетување на Манастирот." data-en="Traditional group lunch: tavče gravče, grilled meats, šopska salata, ajvar & bread, baklava, rakija, water & juice. Free time + optional monastery tour.">Традиционален групен ручек: тавче гравче, скара, шопска салата, ајвар и леб, баклава, ракија, вода и сок. Слободно посетување на Манастирот.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">16:30</div>
+      <div class="timeline-content">
+        <div class="timeline-tag tag-drive" data-mk="🚗 Враќање" data-en="🚗 Return">🚗 Враќање</div>
+        <h3 data-mk="Поаѓање за Скопје" data-en="Depart for Skopje">Поаѓање за Скопје</h3>
+        <p data-mk="Конвој назад по ист пат. Пристигнување во Скопје приближно во 18:00." data-en="Convoy back along the same route. Arrive Skopje approximately 18:00.">Конвој назад по ист пат. Пристигнување во Скопје приближно во 18:00.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ ELEVATION ══════════════════════════════════════════ -->
+<section id="elevation">
+  <div class="reveal">
+    <div class="section-label" data-mk="Профил на теренот" data-en="Terrain Profile">Профил на теренот</div>
+    <h2 data-mk="Профил на елевација" data-en="Elevation Map">Профил на елевација</h2>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;" data-mk="Од Манастирот до врвот — искачување од 550м на 6км со 3 стратешки паузи." data-en="From monastery to summit — a 550m ascent over 6km with 3 strategic pause points.">Од Манастирот до врвот — искачување од 550м на 6км со 3 стратешки паузи.</p>
+  </div>
+  <div class="elev-chart-wrap reveal">
+    <div class="elev-svg-container">
+      <svg class="elev" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4a8b5e" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#4a8b5e" stop-opacity="0.05"/>
+          </linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <line x1="60" y1="20" x2="60" y2="230" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="60" y1="230" x2="780" y2="230" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <line x1="60" y1="180" x2="780" y2="180" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="60" y1="130" x2="780" y2="130" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="60" y1="80" x2="780" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="60" y1="30" x2="780" y2="30" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="50" y="234" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end" font-family="Inter">500м</text>
+        <text x="50" y="184" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end" font-family="Inter">700м</text>
+        <text x="50" y="134" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end" font-family="Inter">900м</text>
+        <text x="50" y="84" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end" font-family="Inter">1100м</text>
+        <text x="50" y="34" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end" font-family="Inter">1200м</text>
+        <polygon points="60,210 100,208 150,205 200,198 230,170 270,162 320,148 380,138 460,120 520,105 580,92 630,85 680,68 740,48 760,50 780,52 780,230 60,230" fill="url(#fillGrad)"/>
+        <polyline points="60,210 100,208 150,205 200,198 230,170 270,162 320,148 380,138 460,120 520,105 580,92 630,85 680,68 740,48" fill="none" stroke="#4a8b5e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+        <text x="60" y="248" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="middle" font-family="Inter">0км</text>
+        <text x="230" y="248" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="middle" font-family="Inter">2км</text>
+        <text x="460" y="248" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="middle" font-family="Inter">3.5км</text>
+        <text x="630" y="248" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="middle" font-family="Inter">5км</text>
+        <text x="740" y="248" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="middle" font-family="Inter">6км</text>
+        <circle cx="60" cy="210" r="6" fill="#7ecf9a" stroke="#0a1520" stroke-width="2"/>
+        <text x="60" y="200" fill="#7ecf9a" font-size="9" text-anchor="middle" font-family="Outfit" font-weight="700">СТАРТ</text>
+        <text x="60" y="190" fill="#7ecf9a" font-size="8" text-anchor="middle" font-family="Inter">600м</text>
+        <circle cx="230" cy="170" r="7" fill="#c4a882" stroke="#0a1520" stroke-width="2"/>
+        <text x="230" y="155" fill="#c4a882" font-size="9" text-anchor="middle" font-family="Outfit" font-weight="700">П1</text>
+        <text x="230" y="146" fill="#c4a882" font-size="8" text-anchor="middle" font-family="Inter">459м</text>
+        <circle cx="460" cy="120" r="7" fill="#6bb3f5" stroke="#0a1520" stroke-width="2"/>
+        <text x="460" y="110" fill="#6bb3f5" font-size="9" text-anchor="middle" font-family="Outfit" font-weight="700">П2</text>
+        <text x="460" y="101" fill="#6bb3f5" font-size="8" text-anchor="middle" font-family="Inter">800м</text>
+        <circle cx="630" cy="85" r="7" fill="#f5856e" stroke="#0a1520" stroke-width="2"/>
+        <text x="630" y="75" fill="#f5856e" font-size="9" text-anchor="middle" font-family="Outfit" font-weight="700">П3</text>
+        <text x="630" y="66" fill="#f5856e" font-size="8" text-anchor="middle" font-family="Inter">1050м</text>
+        <circle cx="740" cy="48" r="9" fill="#d4a017" stroke="#0a1520" stroke-width="2.5"/>
+        <text x="740" y="36" fill="#d4a017" font-size="9" text-anchor="middle" font-family="Outfit" font-weight="700">ВРВ</text>
+        <text x="740" y="27" fill="#d4a017" font-size="8" text-anchor="middle" font-family="Inter">1150м</text>
+        <text x="740" y="18" fill="#d4a017" font-size="8" text-anchor="middle" font-family="Inter">🏆</text>
+      </svg>
+    </div>
+    <div class="waypoints-row">
+      <div class="waypoint-card"><div class="elev-dot" style="background:#7ecf9a;"></div><div class="elev-num">600</div><div class="elev-m">м</div><div class="elev-name" data-mk="Манастир Св. Архангел Михаил" data-en="Monastery Archangel Michael">Манастир Св. Архангел Михаил</div></div>
+      <div class="waypoint-card"><div class="elev-dot" style="background:#c4a882;"></div><div class="elev-num">459</div><div class="elev-m">м</div><div class="elev-name" data-mk="Село Двориште" data-en="Dvorishte Village">Село Двориште</div></div>
+      <div class="waypoint-card"><div class="elev-dot" style="background:#6bb3f5;"></div><div class="elev-num">800</div><div class="elev-m">м</div><div class="elev-name" data-mk="Панорамски Видиковец" data-en="Panorama Viewpoint">Панорамски Видиковец</div></div>
+      <div class="waypoint-card"><div class="elev-dot" style="background:#f5856e;"></div><div class="elev-num">1050</div><div class="elev-m">м</div><div class="elev-name" data-mk="Воени Бункери" data-en="Military Bunkers">Воени Бункери</div></div>
+      <div class="waypoint-card" style="border-color:rgba(212,160,23,0.4);background:rgba(212,160,23,0.08)"><div class="elev-dot" style="background:#d4a017;"></div><div class="elev-num" style="font-size:1.8rem">1150</div><div class="elev-m">м</div><div class="elev-name" data-mk="🏆 Врв Клепа" data-en="🏆 Klepa Summit">🏆 Врв Клепа</div></div>
+    </div>
+  </div>
+
+  <div class="map-embed reveal" style="margin-top: 3rem; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); border-radius: 20px; overflow: hidden; height: auto;">
+    <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--gold-light); text-align: center; padding: 1.5rem 1rem 0.5rem;" data-mk="Сателитска мапа на патеката со Паузи" data-en="Satellite Trail Map with Pauses">Сателитска мапа на патеката со Паузи</h3>
+    <p style="text-align: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; padding-bottom: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.5;" data-mk="Патеката започнува од Манастир Архангел Михаил, поминува низ напуштеното село Двориште и завршува точно на врвот Клепа. По пат се обележани сите точки за одмор." data-en="The trail starts from Monastery Archangel Michael, passes through the abandoned Dvorishte Village, and ends exactly at Klepa Peak. Rest points are marked along the way.">Патеката започнува од Манастир Архангел Михаил, поминува низ напуштеното село Двориште и завршува точно на врвот Клепа. По пат се обележани сите точки за одмор.</p>
+    <div style="position: relative; width: 100%; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
+      <img src="images/klepa_3d_map_clean.png" alt="Клепа Патека Сателитска Мапа со Паузи / Klepa Trail Marked Satellite Map" style="width: 100%; height: auto; display: block; transition: transform 0.4s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'" />
+      <div style="position: absolute; bottom: 35%; right: 5%; background: rgba(13, 26, 18, 0.9); border: 1px solid var(--gold); padding: 6px 12px; border-radius: 8px; color: var(--gold-light); font-weight: bold; font-size: clamp(0.6rem, 1.5vw, 0.85rem); box-shadow: 0 4px 15px rgba(0,0,0,0.6); pointer-events: none; transform: translateX(0%);" data-mk="📍 Манастир Св. Архангел Михаил" data-en="📍 Monastery Archangel Michael">📍 Манастир Св. Архангел Михаил</div>
+      <div style="position: absolute; top: 50%; left: 50%; background: rgba(13, 26, 18, 0.9); border: 1px solid var(--gold); padding: 6px 12px; border-radius: 8px; color: var(--gold-light); font-weight: bold; font-size: clamp(0.6rem, 1.5vw, 0.85rem); box-shadow: 0 4px 15px rgba(0,0,0,0.6); pointer-events: none; transform: translateX(-50%);" data-mk="📍 Село Двориште" data-en="📍 Dvorishte Village">📍 Село Двориште</div>
+      <div style="position: absolute; top: 20%; left: 15%; background: rgba(13, 26, 18, 0.9); border: 1px solid var(--gold); padding: 6px 12px; border-radius: 8px; color: var(--gold-light); font-weight: bold; font-size: clamp(0.6rem, 1.5vw, 0.85rem); box-shadow: 0 4px 15px rgba(0,0,0,0.6); pointer-events: none; transform: translateX(0%);" data-mk="⛰️ Врв Клепа (1150м)" data-en="⛰️ Klepa Peak (1150m)">⛰️ Врв Клепа (1150м)</div>
+    </div>
+    <div style="padding: 1.5rem; text-align: center;">
+      <a href="klepa_trail.gpx" download class="btn btn-primary" style="font-size: 0.9rem;" data-mk="📍 Преземи GPS / GPX Рута" data-en="📍 Download GPS / GPX Route">📍 Преземи GPS / GPX Рута</a>
+      <p style="margin-top: 0.8rem; font-size: 0.8rem; color: rgba(255,255,255,0.4);" data-mk="Компатибилно со Garmin, Strava, Wikiloc и Google Maps." data-en="Compatible with Garmin, Strava, Wikiloc, and Google Maps.">Компатибилно со Garmin, Strava, Wikiloc и Google Maps.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PAUSES ═════════════════════════════════════════════ -->
+<section id="pauses">
+  <div class="reveal">
+    <div class="section-label" data-mk="Места за одмор" data-en="Rest Points">Места за одмор</div>
+    <h2 data-mk="3 места за пауза" data-en="3 Pause Locations">3 места за пауза</h2>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;" data-mk="Стратешки избрани според теренот, погледот и историското значење." data-en="Strategically chosen for terrain, views, and historical significance.">Стратешки избрани според теренот, погледот и историското значење.</p>
+  </div>
+  <div class="pause-cards reveal">
+    <div class="pause-card pause-card-1">
+      <div class="pause-num">01</div>
+      <div class="pause-card-inner">
+        <div class="pause-icon">🏡</div>
+        <h3 data-mk="Село Двориште" data-en="Dvorishte Village">Село Двориште</h3>
+        <div class="pause-elev" data-mk="📍 800м · км 3.5 · 10:00" data-en="📍 800m · km 3.5 · 10:00">📍 800м · км 3.5 · 10:00</div>
+        <p data-mk="Селото Двориште лежи на источните падини на Клепа. Некогаш живо македонско село, денес тивко и мирно место со стари камени куќи и убава природа. Местото носи длабока историска приказна и посебна атмосфера." data-en="Dvorishte village lies on the eastern slopes of Klepa. Once a lively Macedonian settlement, today a peaceful and quiet place with old stone houses and beautiful nature. The site carries a deep historical story and a special atmosphere.">Селото Двориште лежи на источните падини на Клепа. Некогаш живо македонско село, денес тивко и мирно место со стари камени куќи и убава природа. Местото носи длабока историска приказна и посебна атмосфера.</p>
+        <div class="pause-duration" data-mk="30 минути пауза" data-en="30 minutes stop">30 минути пауза</div>
+      </div>
+    </div>
+    <div class="pause-card pause-card-2">
+      <div class="pause-num">02</div>
+      <div class="pause-card-inner">
+        <div class="pause-icon">🌅</div>
+        <h3 data-mk="Видиковец — Панорамски поглед" data-en="Panorama Viewpoint">Видиковец — Панорамски поглед</h3>
+        <div class="pause-elev" data-mk="📍 950м · км 6 · 11:15" data-en="📍 950m · km 6 · 11:15">📍 950м · км 6 · 11:15</div>
+        <p data-mk="Прв отворен гребен со 360° поглед. Одтука се гледаат Стоби, конфлуенцијата на Вардар и Црна Река, и целиот Тиквешки регион кон југ." data-en="First open ridge with 360° views. From here you can see the archaeological site of Stobi, the confluence of the Vardar and Crna rivers, and the entire Tikveš wine region spreading south.">Прв отворен гребен со 360° поглед. Одтука се гледаат Стоби, конфлуенцијата на Вардар и Црна Река, и целиот Тиквешки регион кон југ.</p>
+        <div class="pause-duration" data-mk="20 минути пауза" data-en="20 minutes stop">20 минути пауза</div>
+      </div>
+    </div>
+    <div class="pause-card pause-card-3">
+      <div class="pause-num">03</div>
+      <div class="pause-card-inner">
+        <div class="pause-icon">🪖</div>
+        <h3 data-mk="Гребен со воени бункери" data-en="Military Bunker Ridge">Гребен со воени бункери</h3>
+        <div class="pause-elev" data-mk="📍 1050м · км 8 · 12:15" data-en="📍 1050m · km 8 · 12:15">📍 1050м · км 8 · 12:15</div>
+        <p data-mk="Напуштени југословенски воени бункери на стратешки гребен. Целата Вардарска Долина е видлива — клучна одбранбена позиција за време на Студената Војна. Карпата на врвот е видлива над нас." data-en="Abandoned Yugoslav-era military bunkers on strategic ridgeline. The entire central Vardar valley visible — key Cold War defensive position. The tooth-rock summit is visible above.">Напуштени југословенски воени бункери на стратешки гребен. Целата Вардарска Долина е видлива — клучна одбранбена позиција за време на Студената Војна. Карпата на врвот е видлива над нас.</p>
+        <div class="pause-duration" data-mk="15 минути пауза" data-en="15 minutes stop">15 минути пауза</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MYTHOLOGY ════════════════════════════════════════════ -->
+<section id="mythology" style="background:linear-gradient(180deg,#0d1a12 0%,#0e0a1a 60%,#0d1a12 100%)">
+  <div class="reveal">
+    <div class="section-label" data-mk="Античка легенда" data-en="Ancient Legend">Античка легенда</div>
+    <h2 data-mk="Свештената карпа на Клепа" data-en="The Sacred Rock of Klepa">Свештената карпа на Клепа</h2>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;max-width:700px" data-mk="Врвот на Клепа не е само природен феномен — тоа е место со длабоко античко, свештено значење." data-en="The Klepa summit is not just a natural phenomenon — it is a place of deep ancient, sacred significance.">Врвот на Клепа не е само природен феномен — тоа е место со длабоко античко, свештено значење.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem" class="reveal">
+
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(155,89,182,0.25);border-radius:20px;padding:2rem">
+      <div style="font-size:2.5rem;margin-bottom:1rem">🏛️</div>
+      <h3 style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;color:var(--warm-white);margin-bottom:0.8rem" data-mk="Светилиште на Аполон и Артемида" data-en="Sanctuary of Apollo and Artemis">Светилиште на Аполон и Артемида</h3>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.75" data-mk="Археолозите открија на самиот врв на Клепа остатоци од <strong style='color:#c9a8f5'>античко планинско светилиште</strong> посветено на Аполон и Артемида — божествените близнаци на старите Македонци и Грци. Пронајдени се фрагменти на камени статуи, антички натписи и градежен материјал (Миклучиќ, 1983). Ова светилиште го гледало античкиот град <strong style='color:#c9a8f5'>Стоби</strong> оддолу — едно од главните градски центри на антиката во Македонија." data-en="Archaeologists discovered on the very peak of Klepa the remains of an <strong style='color:#c9a8f5'>ancient mountain sanctuary</strong> dedicated to Apollo and Artemis — the divine twins worshipped by ancient Macedonians and Greeks. Fragments of stone statues, ancient inscriptions and building materials were found (Mikulčić, 1983). This sanctuary looked down upon the ancient city of <strong style='color:#c9a8f5'>Stobi</strong> — one of the major urban centers of antiquity in Macedonia.">Археолозите открија на самиот врв на Клепа остатоци од <strong style="color:#c9a8f5">античко планинско светилиште</strong> посветено на Аполон и Артемида — божествените близнаци на старите Македонци и Грци. Пронајдени се фрагменти на камени статуи, антички натписи и градежен материјал (Миклучиќ, 1983). Ова светилиште го гледало античкиот град <strong style="color:#c9a8f5">Стоби</strong> оддолу — едно од главните градски центри на антиката во Македонија.</p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(212,160,23,0.25);border-radius:20px;padding:2rem">
+      <div style="font-size:2.5rem;margin-bottom:1rem">🌕</div>
+      <h3 style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;color:var(--warm-white);margin-bottom:0.8rem" data-mk="Карпата — Гради на Големата Мајка" data-en="The Rock — Breast of the Great Mother">Карпата — Гради на Големата Мајка</h3>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.75" data-mk="Огромната заоблена карпена формација на врвот на Клепа не е само геолошки феномен — таа наликува на <strong style='color:var(--gold-light)'>гради на богиња</strong>, симбол длабоко вкоренет во традицијата на <strong style='color:var(--gold-light)'>Кибела (Кибела)</strong> — Великата Мајка, чиј култ се ширел низ цела Тракија и Македонија уште пред доаѓањето на Грците. Таа е 'Мајката на Планината' — нејзиното тело е планината, нејзините гради — карпите на врвот. Локалниот народ ја осеќал оваа сила. Оттука и светилиштето — не случајно на самиот врв." data-en="The enormous rounded rock formation at the Klepa summit is not just a geological phenomenon — it resembles a <strong style='color:var(--gold-light)'>goddess's breast</strong>, a symbol deeply rooted in the tradition of <strong style='color:var(--gold-light)'>Cybele</strong> — the Great Mother, whose cult spread across all of Thrace and Macedonia long before the Greeks arrived. She is the 'Mother of the Mountain' — her body is the mountain, her breasts — the rocks at the summit. Local people felt this power. Hence the sanctuary — not by coincidence at the very peak.">Огромната заоблена карпена формација на врвот на Клепа не е само геолошки феномен — таа наликува на <strong style="color:var(--gold-light)">гради на богиња</strong>, симбол длабоко вкоренет во традицијата на <strong style="color:var(--gold-light)">Кибела</strong> — Великата Мајка, чиј култ се ширел низ цела Тракија и Македонија уште пред доаѓањето на Грците. Таа е 'Мајката на Планината' — нејзиното тело е планината, нејзините гради — карпите на врвот. Локалниот народ ја осеќал оваа сила. Оттука и светилиштето — не случајно на самиот врв.</p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(74,139,94,0.25);border-radius:20px;padding:2rem">
+      <div style="font-size:2.5rem;margin-bottom:1rem">💎</div>
+      <h3 style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;color:var(--warm-white);margin-bottom:0.8rem" data-mk="Клепа и Стоби — Мермер и Вода" data-en="Klepa and Stobi — Marble and Water">Клепа и Стоби — Мермер и Вода</h3>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.75" data-mk="Планината Клепа не ги хранела само духовно жителите на Стоби — ги хранела и материјално. Каменоломите на Клепа биле извор на <strong style='color:#7ecf9a'>мермер</strong> за градбата на Стоби. Изворите и потоците на Клепа снабдувале вода за градот преку водоводни системи. Планината, Monastirот, Стоби — еден нераскинлив систем на живот и вера." data-en="Mount Klepa not only fed Stobi's people spiritually — it fed them materially too. Klepa's quarries were the source of <strong style='color:#7ecf9a'>marble</strong> for Stobi's construction. The springs and streams of Klepa supplied water to the city through aqueduct systems. The mountain, the Monastery, Stobi — one unbreakable system of life and faith.">Планината Клепа не ги хранела само духовно жителите на Стоби — ги хранела и материјално. Каменоломите на Клепа биле извор на <strong style="color:#7ecf9a">мермер</strong> за градбата на Стоби. Изворите и потоците на Клепа снабдувале вода за градот преку водоводни системи. Планината, Monastirот, Стоби — еден нераскинлив систем на живот и вера.</p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(107,179,245,0.2);border-radius:20px;padding:2rem">
+      <div style="font-size:2.5rem;margin-bottom:1rem">⚡</div>
+      <h3 style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;color:var(--warm-white);margin-bottom:0.8rem" data-mk="Вулканска душа на Клепа" data-en="The Volcanic Soul of Klepa">Вулканска душа на Клепа</h3>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.75" data-mk="Геолошки, врвот на Клепа е <strong style='color:#6bb3f5'>вулкански некови</strong> — столб замрзната магма од древни вулкански активности. Карпата буквално дојде од длабочините на Земјата, пробивајќи се нагоре кон небото. Таа е огнена, жива, древна. Да стоиш на нејзиниот врв значи да стоиш на земни гради — тоа чувство е неопишливо." data-en="Geologically, the Klepa summit is a <strong style='color:#6bb3f5'>volcanic neck</strong> — a column of frozen magma from ancient volcanic activity. The rock literally came from the depths of the Earth, pushing upward toward the sky. It is fiery, alive, ancient. To stand on its summit is to stand on the earth's chest — that feeling is indescribable.">Геолошки, врвот на Клепа е <strong style="color:#6bb3f5">вулкански некови</strong> — столб замрзната магма од древни вулкански активности. Карпата буквално дојде од длабочините на Земјата, пробивајќи се нагоре кон небото. Таа е огнена, жива, древна. Да стоиш на нејзиниот врв значи да стоиш на земни гради — тоа чувство е неопишливо.</p>
+    </div>
+
+  </div>
+
+  <div style="margin-top:2rem;background:linear-gradient(135deg,rgba(155,89,182,0.12),rgba(212,160,23,0.08));border:1px solid rgba(155,89,182,0.25);border-radius:16px;padding:2rem;text-align:center" class="reveal">
+    <p style="font-size:1rem;color:rgba(255,255,255,0.8);line-height:1.8;font-style:italic" data-mk="&ldquo;Кога ќе стигнете на врвот на Клепа и ги погледнете тие огромни заоблени карпи — замислете ги очите на античкиот пастир кој гледал во нив. Тој не гледал камен. Тој гледал гради на Мајката. Тоа е Клепа.&rdquo;" data-en="&ldquo;When you reach the summit of Klepa and look at those enormous rounded rocks — imagine the eyes of the ancient shepherd who gazed upon them. He did not see stone. He saw the breast of the Mother. That is Klepa.&rdquo;">&ldquo;Кога ќе стигнете на врвот на Клепа и ги погледнете тие огромни заоблени карпи — замислете ги очите на античкиот пастир кој гледал во нив. Тој не гледал камен. Тој гледал гради на Мајката. Тоа е Клепа.&rdquo;</p>
+  </div>
+</section>
+
+<!-- ═══ DRIVING ════════════════════════════════════════════ -->
+<section id="driving">
+  <div class="reveal">
+    <div class="section-label" data-mk="Патување со автомобил" data-en="Getting There">Патување со автомобил</div>
+    <h2 data-mk="Рута од Скопје" data-en="Driving Route from Skopje">Рута од Скопје</h2>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;" data-mk="~80км · ~1ч 30мин вкупно · Поаѓање во 06:30" data-en="~80km · ~1h 30min total · Depart 06:30">~80км · ~1ч 30мин вкупно · Поаѓање во 06:30</p>
+  </div>
+  <div class="route-steps reveal">
+    <div class="route-step"><div class="step-num">1</div><div class="step-text"><strong data-mk="Скопје → Автопат А1/Е75 (Југ)" data-en="Skopje → A1/E75 Motorway (South)">Скопје → Автопат А1/Е75 (Југ)</strong><p data-mk="Одете на југ по автопатот А1 кон Велес / Гевгелија" data-en="Head south on the A1 motorway toward Veles / Gevgelija">Одете на југ по автопатот А1 кон Велес / Гевгелија</p></div></div>
+    <div class="route-step"><div class="step-num">2</div><div class="step-text"><strong data-mk="Поминете низ Велес" data-en="Pass through Veles">Поминете низ Велес</strong><p data-mk="Продолжете на југ покрај Велес, уште ~20км до излезот за Градско" data-en="Continue south past Veles, approximately 20km more to Gradsko exit">Продолжете на југ покрај Велес, уште ~20км до излезот за Градско</p></div></div>
+    <div class="route-step"><div class="step-num">3</div><div class="step-text"><strong data-mk="Свртете на излезот за Градско" data-en="Take the Gradsko Exit">Свртете на излезот за Градско</strong><p data-mk="Излезете од автопатот А1 кај приклучокот Градско" data-en="Exit the A1 motorway at the Gradsko junction">Излезете од автопатот А1 кај приклучокот Градско</p></div></div>
+    <div class="route-step"><div class="step-num">4</div><div class="step-text"><strong data-mk="Градско → Долно Чичево → Горно Чичево" data-en="Gradsko → Dolno Chichevo → Gorno Chichevo">Градско → Долно Чичево → Горно Чичево</strong><p data-mk="Следете го тесниот асфалтен локален пат (12км). Возете внимателно — тесни едноколски делови" data-en="Follow the narrow asphalted local road (12km). Drive carefully — road is narrow, one-lane sections">Следете го тесниот асфалтен локален пат (12км). Возете внимателно — тесни едноколски делови</p></div></div>
+    <div class="route-step"><div class="step-num">5</div><div class="step-text"><strong data-mk="Последни 2км — Земјен пат до Манастирот" data-en="Final 2km — Dirt Road to Monastery">Последни 2км — Земјен пат до Манастирот</strong><p data-mk="Од Горно Чичево, следете го неасфалтираниот земјен пат до Monastirот Архангел Михаил" data-en="From Gorno Chichevo, follow the unpaved dirt road to Monastery Archangel Michael">Од Горно Чичево, следете го неасфалтираниот земјен пат до Monastirот Архангел Михаил</p></div></div>
+  </div>
+  <div class="warning-box reveal">
+    <div class="warn-icon">⚠️</div>
+    <p data-mk="<strong>Предупредување за патот:</strong> Последните 2км до Манастирот се <strong>неасфалтиран земјен пат</strong>. Препорачуваат се SUV возила или такви со поголем просвет. Возете полека. ГПС координати на Манастирот: <strong>41.5637° С, 21.8656° И</strong>" data-en="<strong>Road Warning:</strong> The last 2 km to the monastery is an <strong>unpaved dirt road</strong>. SUVs or vehicles with good ground clearance preferred. Drive slowly. GPS coordinates: <strong>41.5637° N, 21.8656° E</strong>"><strong>Предупредување за патот:</strong> Последните 2км до Манастирот се <strong>неасфалтиран земјен пат</strong>. Препорачуваат се SUV возила или такви со поголем просвет. Возете полека. ГПС координати: <strong>41.5637° С, 21.8656° И</strong></p>
+  </div>
+  <div class="map-embed reveal">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d188540.6!2d21.648!3d41.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x13541d1f8d0c88c9%3A0x1b1d65c97f5e1b3e!2sSkopje%2C%20North%20Macedonia!3m2!1d42.0!2d21.43!4m5!1s0x0%3A0x0!2zNDHCsDMzJzQ5LjMiTiAyMcKwNTEnNTYuMSJF!3m2!1d41.5637!2d21.8656!5e0!3m2!1sen!2smk!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Рута од Скопје до Манастир Архангел Михаил"></iframe>
+  </div>
+  <div style="text-align:center;margin-top:1.5rem;" class="reveal">
+    <a href="https://www.google.com/maps/dir/Skopje,+North+Macedonia/41.5637,21.8656" target="_blank" class="btn btn-primary" data-mk="🗺️ Отвори целата рута во Google Maps" data-en="🗺️ Open Full Route in Google Maps">🗺️ Отвори целата рута во Google Maps</a>
+  </div>
+</section>
+
+<!-- ═══ MONASTERY ══════════════════════════════════════════ -->
+<section id="monastery">
+  <div class="reveal">
+    <div class="section-label" data-mk="База на кампот" data-en="Base Camp">База на кампот</div>
+    <h2 data-mk="Манастир Архангел Михаил" data-en="Monastery Archangel Michael">Манастир Архангел Михаил</h2>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;" data-mk="Изграден 1861 · ГПС: 41.5637° С, 21.8656° И · Горно Чичево, Градско" data-en="Built 1861 · GPS: 41.5637° N, 21.8656° E · Gorno Chichevo, Gradsko">Изграден 1861 · ГПС: 41.5637° С, 21.8656° И · Горно Чичево, Градско</p>
+  </div>
+  <div class="monastery-grid reveal">
+    <div class="info-card">
+      <h3 data-mk="📋 Листа при пристигање" data-en="📋 Arrival Checklist">📋 Листа при пристигање</h3>
+      <ul>
+        <li data-mk="Паркирање во отворен терен (два организирани реда)" data-en="Park vehicles in open field (two organized rows)">Паркирање во отворен терен (два организирани реда)</li>
+        <li data-mk="Назначете координатор за паркинг" data-en="Assign parking coordinator to guide cars">Назначете координатор за паркинг</li>
+        <li data-mk="Целосно броење — потврдете 50 учесници" data-en="Full head count — confirm all 50 participants">Целосно броење — потврдете 50 учесници</li>
+        <li data-mk="Пауза за тоалет за сите" data-en="Restroom break for everyone">Пауза за тоалет за сите</li>
+        <li data-mk="Делење пакети со ручек (1 по лице)" data-en="Distribute lunch packets (1 per person)">Делење пакети со ручек (1 по лице)</li>
+        <li data-mk="Делење вода (мин. 1.5Л по лице)" data-en="Distribute water (1.5L per person minimum)">Делење вода (мин. 1.5Л по лице)</li>
+        <li data-mk="Брифинг на готвачкиот тим — тие остануваат" data-en="Chef team briefing — they stay at monastery">Брифинг на готвачкиот тим — тие остануваат</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3 data-mk="🍳 План за готвачкиот тим" data-en="🍳 Chef Team Plan">🍳 План за готвачкиот тим</h3>
+      <ul>
+        <li data-mk="Готвачкиот тим НЕ пешачи — остануваат во Манастирот" data-en="Chef team does NOT hike — stays at monastery">Готвачкиот тим НЕ пешачи — остануваат во Манастирот</li>
+        <li data-mk="Почнуваат да готват во 08:15 кога пешачите заминуваат" data-en="Begin cooking at 08:15 when hikers depart">Почнуваат да готват во 08:15 кога пешачите заминуваат</li>
+        <li data-mk="Мени: тавче гравче, скара, шопска салата" data-en="Menu: tavče gravče, grilled meats, šopska salata">Мени: тавче гравче, скара, шопска салата</li>
+        <li data-mk="Ајвар, свеж леб, баклава или тулумби" data-en="Ajvar, fresh bread, baklava or tulumbi">Ајвар, свеж леб, баклава или тулумби</li>
+        <li data-mk="Пијалоци: ракија (возрасни), вода, сок" data-en="Drinks: rakija (adults), water, fruit juice">Пијалоци: ракија (возрасни), вода, сок</li>
+        <li data-mk="Ручекот готов до 15:00 за враќањето на групата" data-en="Lunch ready by 15:00 for group return">Ручекот готов до 15:00 за враќањето на групата</li>
+        <li data-mk="Организирање на седење во дворот на Манастирот" data-en="Arrange seating in monastery courtyard">Организирање на седење во дворот на Манастирот</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3 data-mk="🏛️ За Манастирот" data-en="🏛️ About the Monastery">🏛️ За Манастирот</h3>
+      <ul>
+        <li data-mk="Основан помеѓу 1695–1705 г. од монахот Михаил" data-en="Originally founded between 1695–1705 by monk Michael">Основан помеѓу 1695–1705 г. од монахот Михаил</li>
+        <li data-mk="Сегашната crkva изградена 1861 г. од Андреја Дамјанов" data-en="Current church built 1861 by Andreja Damjanov">Сегашната crkva изградена 1861 г. од Андреја Дамјанов</li>
+        <li data-mk="Куполна архитектура со висока ѕвоникарница" data-en="Domed architecture with high bell tower">Куполна архитектура со висока ѕвоникарница</li>
+        <li data-mk="Две crkvi: Св. Архангел Михаил + Св. Богородица" data-en="Two churches: St. Archangel Michael + Holy Mother of God">Две crkvi: Св. Архангел Михаил + Св. Богородица</li>
+        <li data-mk="Сместен во срцето на етногеографскиот регион Клепа" data-en="Located in the heart of the Klepa ethnographic region">Сместен во срцето на етногеографскиот регион Клепа</li>
+        <li data-mk="Еден од најубавите примери на македонска crkovна архитектура" data-en="Finest example of Macedonian church architecture">Еден од најубавите примери на македонска crkovна архитектура</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3 data-mk="📣 Теми за брифингот" data-en="📣 Briefing Talk Points">📣 Теми за брифингот</h3>
+      <ul>
+        <li data-mk="Добредојдовте на Клепа Патека — историја на Monastirот" data-en="Welcome the group — history of the monastery and region">Добредојдовте на Клепа Патека — историја на Monastirот</li>
+        <li data-mk="Преглед на патеката: 6км, 550м искачување, 3 паузи" data-en="Trail overview: 6km, 550m ascent, 3 pauses">Преглед на патеката: 6км, 550м искачување, 3 паузи</li>
+        <li data-mk="Правила за безбедност + систем на партнери" data-en="Safety rules + buddy system enforcement">Правила за безбедност + систем на партнери</li>
+        <li data-mk="Потсетете: никој пред раководителите на групи" data-en="Remind: no one ahead of the group leaders">Потсетете: никој пред раководителите на групи</li>
+        <li data-mk="Итни броеви: Планинска спасителна служба 192 / 112" data-en="Emergency numbers: Mountain Rescue 192 / 112">Итни броеви: Планинска спасителна служба 192 / 112</li>
+        <li data-mk="Соопштете за топлиот ручек што чека по враќањето!" data-en="Announce the hot lunch waiting on return!">Соопштете за топлиот ручек што чека по враќањето!</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GEAR ════════════════════════════════════════════════ -->
+<section id="gear">
+  <div class="reveal">
+    <div class="section-label" data-mk="Опрема" data-en="Equipment">Опрема</div>
+    <h2 data-mk="Што треба секој пешач" data-en="What Every Hiker Needs">Што треба секој пешач</h2>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;" data-mk="Предмети со златна граница се <span style='color:var(--gold)'>задолжителни</span>. Без исклучоци." data-en="Items with gold border are <span style='color:var(--gold)'>mandatory</span>. No exceptions.">Предмети со златна граница се <span style="color:var(--gold)">задолжителни</span>. Без исклучоци.</p>
+  </div>
+  <div class="gear-grid reveal">
+    <div class="gear-item mandatory"><div class="gear-icon">👟</div><div class="gear-text"><strong data-mk="Планинарски чевли" data-en="Hiking Boots">Планинарски чевли</strong><span data-mk="Затворени, со поддршка за глуждовите" data-en="Closed, ankle support, non-slip">Затворени, со поддршка за глуждовите</span></div></div>
+    <div class="gear-item mandatory"><div class="gear-icon">💧</div><div class="gear-text"><strong data-mk="1.5–2Л вода" data-en="1.5–2L Water">1.5–2Л вода</strong><span data-mk="Минимум — нема дополнување на патеката" data-en="Minimum — no resupply on trail">Минимум — нема дополнување на патеката</span></div></div>
+    <div class="gear-item mandatory"><div class="gear-icon">☀️</div><div class="gear-text"><strong data-mk="Крема за сонце СЗФ30+" data-en="Sunscreen SPF30+">Крема за сонце СЗФ30+</strong><span data-mk="Горниот дел од патеката нема сенка" data-en="Upper trail has zero shade">Горниот дел од патеката нема сенка</span></div></div>
+    <div class="gear-item mandatory"><div class="gear-icon">🧢</div><div class="gear-text"><strong data-mk="Капа / шапка" data-en="Hat / Cap">Капа / шапка</strong><span data-mk="Целосна изложеност на сонце над 800м" data-en="Full sun exposure above 800m">Целосна изложеност на сонце над 800м</span></div></div>
+    <div class="gear-item mandatory"><div class="gear-icon">📦</div><div class="gear-text"><strong data-mk="Пакет со ручек" data-en="Lunch Packet">Пакет со ручек</strong><span data-mk="Поделен во Monastirот во 08:00" data-en="Distributed at monastery at 08:00">Поделен во Monastirот во 08:00</span></div></div>
+    <div class="gear-item mandatory"><div class="gear-icon">📱</div><div class="gear-text"><strong data-mk="Наполнет телефон" data-en="Charged Phone">Наполнет телефон</strong><span data-mk="За итни случаи, ГПС, фотографии" data-en="For emergency, GPS, photos">За итни случаи, ГПС, фотографии</span></div></div>
+    <div class="gear-item"><div class="gear-icon">🧥</div><div class="gear-text"><strong data-mk="Лесна ветровитка" data-en="Light Windproof Jacket">Лесна ветровитка</strong><span data-mk="Врвот на 1150м може да биде ветровит" data-en="Summit at 1150m can be windy">Врвот на 1150м може да биде ветровит</span></div></div>
+    <div class="gear-item"><div class="gear-icon">🥢</div><div class="gear-text"><strong data-mk="Планинарски стапови" data-en="Trekking Poles">Планинарски стапови</strong><span data-mk="Опционално — корисно на стрмни делови" data-en="Optional — helpful on steep sections">Опционално — корисно на стрмни делови</span></div></div>
+    <div class="gear-item"><div class="gear-icon">🍫</div><div class="gear-text"><strong data-mk="Енергетски закуски" data-en="Energy Snacks">Енергетски закуски</strong><span data-mk="Ореви, енергетски плочки, чоколадо" data-en="Nuts, energy bars, chocolate">Ореви, енергетски плочки, чоколадо</span></div></div>
+    <div class="gear-item"><div class="gear-icon">🩹</div><div class="gear-text"><strong data-mk="Аптечка за прва помош" data-en="First Aid Kit">Аптечка за прва помош</strong><span data-mk="1 аптечка на 10 луѓе (5 вкупно)" data-en="1 kit per 10 people (5 total)">1 аптечка на 10 луѓе (5 вкупно)</span></div></div>
+    <div class="gear-item"><div class="gear-icon">🔦</div><div class="gear-text"><strong data-mk="Мала светилка" data-en="Small Flashlight">Мала светилка</strong><span data-mk="Во случај на задоцнето враќање" data-en="Just in case of delayed return">Во случај на задоцнето враќање</span></div></div>
+    <div class="gear-item"><div class="gear-icon">📸</div><div class="gear-text"><strong data-mk="Камера / GoPro" data-en="Camera / GoPro">Камера / GoPro</strong><span data-mk="Нема да пожалите за погледите на врвот" data-en="You won't regret the summit views">Нема да пожалите за погледите на врвот</span></div></div>
+  </div>
+</section>
+
+<!-- ═══ EMERGENCY ══════════════════════════════════════════ -->
+<section id="emergency">
+  <div class="reveal">
+    <div class="section-label" data-mk="Безбедност" data-en="Safety">Безбедност</div>
+    <h2 data-mk="Итни контакти" data-en="Emergency Contacts">Итни контакти</h2>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;" data-mk="Зачувајте ги овие броеви пред поаѓање. Споделете ги со сите 5 раководители на групи." data-en="Save these numbers before departing. Share with all 5 group leaders.">Зачувајте ги овие броеви пред поаѓање. Споделете ги со сите 5 раководители на групи.</p>
+  </div>
+  <div class="emergency-grid reveal">
+    <div class="emergency-card"><div class="em-icon">🏔️</div><div class="em-name" data-mk="Планинска спасителна служба" data-en="Mountain Rescue">Планинска спасителна служба</div><div class="em-num">192</div></div>
+    <div class="emergency-card"><div class="em-icon">🚨</div><div class="em-name" data-mk="Општа итна помош" data-en="General Emergency">Општа итна помош</div><div class="em-num">112</div></div>
+    <div class="emergency-card"><div class="em-icon">👮</div><div class="em-name" data-mk="Полиција" data-en="Police">Полиција</div><div class="em-num">192</div></div>
+    <div class="emergency-card"><div class="em-icon">🏥</div><div class="em-name" data-mk="Брза помош" data-en="Ambulance">Брза помош</div><div class="em-num">194</div></div>
+  </div>
+  <div style="margin-top:2rem;padding:1.5rem;background:rgba(74,139,94,0.1);border:1px solid rgba(74,139,94,0.25);border-radius:14px;" class="reveal">
+    <p style="font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.7" data-mk="⚠️ <strong style='color:var(--warm-white)'>Раководители на групи (1 на 10 луѓе):</strong> Назначете 5 раководители пред пешачењето. Секој носи аптечка, ги знае итните броеви и е одговорен за својата група од 10 лица. Никој не треба да биде повеќе од 50м пред или зад својот раководител." data-en="⚠️ <strong style='color:var(--warm-white)'>Group Leaders (1 per 10 people):</strong> Assign 5 group leaders before the hike. Each carries a first aid kit, knows the emergency numbers, and is responsible for their 10-person group. No one should be more than 50m ahead or behind their group leader at any time.">⚠️ <strong style="color:var(--warm-white)">Раководители на групи (1 на 10 луѓе):</strong> Назначете 5 раководители пред пешачењето. Секој носи аптечка, ги знае итните броеви и е одговорен за својата група од 10 лица. Никој не треба да биде повеќе од 50м пред или зад својот раководител.</p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════ -->
+<footer>
+  <div class="foot-logo">⛰ КЛЕПА ПАТЕКА</div>
+  <p data-mk="Манастир Архангел Михаил → Двориште → Врв Клепа (1150м) · Градско, Македонија" data-en="Monastery Archangel Michael → Dvorishte → Klepa Peak (1150m) · Gradsko, Macedonia">Манастир Архангел Михаил → Двориште → Врв Клепа (1150м) · Градско, Македонија</p>
+  <p data-mk="50 Учесници · Јуни 2026 · Изработено со Antigravity AI" data-en="50 Participants · June 2026 · Created with Antigravity AI" style="margin-top:0.5rem">50 Учесници · Јуни 2026 · Изработено со Antigravity AI</p>
+  <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="https://www.google.com/maps/dir/Skopje,+North+Macedonia/41.5637,21.8656" target="_blank" class="btn btn-outline" style="font-size:0.8rem;padding:0.6rem 1.4rem;" data-mk="🗺️ Патна рута" data-en="🗺️ Driving Route">🗺️ Патна рута</a>
+    <a href="https://en.wikipedia.org/wiki/Chichevo_Monastery" target="_blank" class="btn btn-outline" style="font-size:0.8rem;padding:0.6rem 1.4rem;" data-mk="⛪ За Monastirот" data-en="⛪ Monastery Info">⛪ За Monastirот</a>
+    <a href="https://www.openstreetmap.org/#map=13/41.5637/21.8656" target="_blank" class="btn btn-outline" style="font-size:0.8rem;padding:0.6rem 1.4rem;" data-mk="🌍 OpenStreetMap" data-en="🌍 OpenStreetMap">🌍 OpenStreetMap</a>
+  </div>
+</footer>
+
+<script>
+  // ── LANGUAGE TOGGLE ──────────────────────────────────────
+  let currentLang = 'mk';
+
+  function applyLang(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.setAttribute('data-lang', lang);
+    document.getElementById('btn-mk').classList.toggle('active', lang === 'mk');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.querySelector('.nav-logo').textContent = lang === 'mk' ? '⛰ КЛЕПА' : '⛰ KLEPA';
+    document.querySelectorAll('[data-mk]').forEach(el => {
+      const text = lang === 'mk' ? el.getAttribute('data-mk') : el.getAttribute('data-en');
+      if (text !== null) {
+        if (text.includes('<') || text.includes('&')) { el.innerHTML = text; }
+        else { el.textContent = text; }
+      }
+    });
+    document.title = lang === 'mk'
+      ? 'КЛЕПА ПАТЕКА — Водич за Експедиција 2026'
+      : 'KLEPA TRAIL — Expedition Guide 2026';
+  }
+
+  function setLang(lang) {
+    currentLang = lang;
+    applyLang(lang);
+  }
+
+  // Force Macedonian Cyrillic on first load
+  window.addEventListener('DOMContentLoaded', function() {
+    applyLang('mk');
+  });
+
+  function _setLang_UNUSED(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+
+    // Toggle button states
+    document.getElementById('btn-mk').classList.toggle('active', lang === 'mk');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+    // Update nav logo
+    document.querySelector('.nav-logo').textContent = lang === 'mk' ? '⛰ КЛЕПА' : '⛰ KLEPA';
+
+    // Update all elements with data-mk / data-en
+    document.querySelectorAll('[data-mk]').forEach(el => {
+      const text = lang === 'mk' ? el.getAttribute('data-mk') : el.getAttribute('data-en');
+      if (text !== null) {
+        // Use innerHTML to support nested <strong> tags
+        if (text.includes('<') || text.includes('&')) {
+          el.innerHTML = text;
+        } else {
+          el.textContent = text;
+        }
+      }
+    });
+
+    // Sync page title and meta
+    document.title = lang === 'mk'
+      ? 'КЛЕПА ПАТЕКА — Водич за Експедиција 2026'
+      : 'KLEPA TRAIL — Expedition Guide 2026';
+  }
+
+  // ── SCROLL REVEAL ────────────────────────────────────────
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // ── ACTIVE NAV ────────────────────────────────────────────
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => { l.style.color = ''; l.style.borderBottomColor = ''; });
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) { active.style.color = '#f0c040'; active.style.borderBottomColor = '#d4a017'; }
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>

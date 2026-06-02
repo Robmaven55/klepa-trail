@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Избери слика за Hero — КЛЕПА ПАТЕКА</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#080f0a; font-family:'Outfit',sans-serif; color:#fff; min-height:100vh; }
+  header { text-align:center; padding:3rem 2rem 2rem; }
+  header h1 { font-size:2rem; font-weight:900; color:#f0c040; }
+  header p { color:rgba(255,255,255,0.5); margin-top:0.5rem; font-size:0.9rem; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; padding:2rem; max-width:1400px; margin:0 auto; }
+  .card { border-radius:16px; overflow:hidden; border:2px solid rgba(255,255,255,0.08); cursor:pointer; transition:all 0.3s; position:relative; }
+  .card:hover { border-color:#f0c040; transform:scale(1.01); box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+  .card.selected { border-color:#f0c040; box-shadow:0 0 0 4px rgba(240,192,64,0.35); }
+  .card img { width:100%; height:340px; object-fit:cover; display:block; }
+  .card-info { padding:1.2rem 1.5rem; background:rgba(255,255,255,0.04); }
+  .card-num { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#f0c040; margin-bottom:0.3rem; }
+  .card-title { font-size:1.05rem; font-weight:700; }
+  .card-tag { display:inline-block; margin-top:0.5rem; padding:0.2rem 0.7rem; border-radius:100px; font-size:0.7rem; font-weight:600; }
+  .tag-real { background:rgba(74,139,94,0.3); color:#7ecf9a; border:1px solid rgba(74,139,94,0.4); }
+  .tag-anime { background:rgba(155,89,182,0.3); color:#c9a8f5; border:1px solid rgba(155,89,182,0.4); }
+  .selected-badge { position:absolute; top:1rem; right:1rem; background:#f0c040; color:#1a1a00; font-weight:900; font-size:0.75rem; padding:0.4rem 1rem; border-radius:100px; letter-spacing:0.05em; display:none; }
+  .card.selected .selected-badge { display:block; }
+  footer-bar { display:block; position:sticky; bottom:0; background:rgba(8,15,10,0.97); backdrop-filter:blur(20px); border-top:1px solid rgba(255,255,255,0.08); padding:1.2rem 2rem; text-align:center; }
+  .confirm-btn { background:linear-gradient(135deg,#d4a017,#f0c040); color:#1a1a00; font-family:'Outfit',sans-serif; font-weight:800; font-size:1rem; padding:0.9rem 3rem; border-radius:100px; border:none; cursor:pointer; transition:all 0.3s; letter-spacing:0.05em; }
+  .confirm-btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(212,160,23,0.4); }
+  .confirm-btn:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
+  #confirm-label { color:rgba(255,255,255,0.5); font-size:0.85rem; margin-top:0.6rem; }
+  #confirm-name { color:#f0c040; font-weight:700; }
+  .wide { grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⛰ Избери ја Hero сликата</h1>
+  <p>Кликни на сликата за да ја избереш — потоа потврди долу. Сите слики се зачувани во папката /images/</p>
+</header>
+
+<div class="grid">
+
+  <div class="card" onclick="select(this,'images/klepa_hero_01_realistic_monastery.png','01 — Реалистична: Манасти и Патека')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_01_realistic_monastery.png" alt="Реалистична — Манастир и патека"/>
+    <div class="card-info">
+      <div class="card-num">Слика 01</div>
+      <div class="card-title">Реалистична — Манастир и патека</div>
+      <span class="card-tag tag-real">📷 Реалистична</span>
+    </div>
+  </div>
+
+  <div class="card" onclick="select(this,'images/klepa_hero_02_realistic_hikers.png','02 — Реалистична: Пешачи на патека')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_02_realistic_hikers.png" alt="Реалистична — Пешачи на патека"/>
+    <div class="card-info">
+      <div class="card-num">Слика 02</div>
+      <div class="card-title">Реалистична — Пешачи на патеката</div>
+      <span class="card-tag tag-real">📷 Реалистична</span>
+    </div>
+  </div>
+
+  <div class="card wide" onclick="select(this,'images/klepa_hero_03_realistic_panorama.png','03 — Реалистична: Аерска панорама')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_03_realistic_panorama.png" alt="Реалистична — Панорама" style="height:400px"/>
+    <div class="card-info">
+      <div class="card-num">Слика 03</div>
+      <div class="card-title">Реалистична — Аерска панорама на Клепа (16:9)</div>
+      <span class="card-tag tag-real">📷 Реалистична · Препорачана за Hero</span>
+    </div>
+  </div>
+
+  <div class="card" onclick="select(this,'images/klepa_hero_04_anime_ghibli.png','04 — Аниме: Studio Ghibli стил')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_04_anime_ghibli.png" alt="Аниме — Studio Ghibli"/>
+    <div class="card-info">
+      <div class="card-num">Слика 04</div>
+      <div class="card-title">Јапонски аниме — Studio Ghibli стил</div>
+      <span class="card-tag tag-anime">🎌 Аниме · Ghibli</span>
+    </div>
+  </div>
+
+  <div class="card" onclick="select(this,'images/klepa_hero_05_anime_epic.png','05 — Аниме: Епски Шонен стил')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_05_anime_epic.png" alt="Аниме — Епски стил"/>
+    <div class="card-info">
+      <div class="card-num">Слика 05</div>
+      <div class="card-title">Јапонски аниме — Епски Шонен стил</div>
+      <span class="card-tag tag-anime">🎌 Аниме · Shinkai / Demon Slayer</span>
+    </div>
+  </div>
+
+  <div class="card" onclick="select(this,'images/klepa_hero_06_cyrillic.png','06 — Постер: Со текст КЛЕПА ПАТЕКА')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_06_cyrillic.png" alt="Постер — Текст"/>
+    <div class="card-info">
+      <div class="card-num">Слика 06</div>
+      <div class="card-title">Постер — Со интегриран текст (КЛЕПА ПАТЕКА)</div>
+      <span class="card-tag tag-real">📷 Реалистична · Типографија</span>
+    </div>
+  </div>
+
+  <div class="card" onclick="select(this,'images/klepa_hero_07_realistic_map_cyrillic.png','07 — Реалистична 3Д Мапа (Кирилица)')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_07_realistic_map_cyrillic.png" alt="Реалистична 3Д мапа"/>
+    <div class="card-info">
+      <div class="card-num">Слика 07</div>
+      <div class="card-title">Реалистична 3Д Мапа со обележана патека и село (КЛЕПА ПАТЕКА)</div>
+      <span class="card-tag tag-real">📷 Реалистична · Мапа</span>
+    </div>
+  </div>
+
+  <div class="card" onclick="select(this,'images/klepa_hero_08_drone_english.png','08 — Дрон фотографија (Англиски)')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_08_drone_english.png" alt="Дрон фотографија"/>
+    <div class="card-info">
+      <div class="card-num">Слика 08</div>
+      <div class="card-title">Дрон фотографија — Патека и урнатини (KLEPA TRAIL)</div>
+      <span class="card-tag tag-real">📷 Реалистична · Дрон</span>
+    </div>
+  </div>
+
+  <div class="card" onclick="select(this,'images/klepa_hero_09_infographic_cyrillic.png','09 — Инфографик Постер (Кирилица)')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_09_infographic_cyrillic.png" alt="Инфографик постер"/>
+    <div class="card-info">
+      <div class="card-num">Слика 09</div>
+      <div class="card-title">Инфографик Постер (КЛЕПА ПАТЕКА)</div>
+      <span class="card-tag tag-real">🎨 Илустрација · Мапа</span>
+    </div>
+  </div>
+
+  <div class="card" onclick="select(this,'images/klepa_hero_10_hikers_cyrillic.png','10 — Планинари во Двориште (Кирилица)')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_10_hikers_cyrillic.png" alt="Планинари постер"/>
+    <div class="card-info">
+      <div class="card-num">Слика 10</div>
+      <div class="card-title">Планинари покрај урнатините кон врвот (КЛЕПА ПАТЕКА)</div>
+      <span class="card-tag tag-real">📷 Реалистична · Луѓе</span>
+    </div>
+  </div>
+
+  <div class="card wide" onclick="select(this,'images/klepa_hero_11_vintage_english.png','11 — Винтиџ патнички постер (Англиски)')">
+    <div class="selected-badge">✓ ИЗБРАНА</div>
+    <img src="images/klepa_hero_11_vintage_english.png" alt="Винтиџ постер" style="height:400px"/>
+    <div class="card-info">
+      <div class="card-num">Слика 11</div>
+      <div class="card-title">Винтиџ патнички постер со мапа на патеката (KLEPA TRAIL)</div>
+      <span class="card-tag tag-real">🎨 Винтиџ · Мапа</span>
+    </div>
+  </div>
+
+</div>
+
+<footer-bar>
+  <button class="confirm-btn" id="confirm-btn" disabled onclick="confirmSelection()">Потврди ја избраната слика →</button>
+  <div id="confirm-label">Кликни на слика за да избереш, потоа потврди овде</div>
+</footer-bar>
+
+<script>
+  let chosen = null;
+  let chosenLabel = '';
+
+  function select(card, src, label) {
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    chosen = src;
+    chosenLabel = label;
+    document.getElementById('confirm-btn').disabled = false;
+    document.getElementById('confirm-label').innerHTML = 'Избрана: <span id="confirm-name">' + label + '</span>';
+  }
+
+  function confirmSelection() {
+    if (!chosen) return;
+    const msg = '✅ Одлично!\n\nИзбравте: ' + chosenLabel + '\n\nПатека до сликата:\n' + chosen + '\n\nКажете му на AI агентот која слика ја избравте (бројот) и тој ќе ја постави во Hero секцијата на index.html!';
+    alert(msg);
+  }
+</script>
+</body>
+</html>
