@@ -239,15 +239,29 @@
 
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 768px) {
+      section { padding: 3rem 1.2rem; }
+      .hero { padding: 1.5rem; }
       .timeline-grid::before { left: 2.2rem; }
-      .timeline-item { grid-template-columns: 4.5rem 1fr; gap: 1rem; }
+      .timeline-item { grid-template-columns: 4.5rem 1fr; gap: 1rem; padding: 1rem 0; }
       .timeline-time { font-size: 0.9rem; }
       .timeline-time::after { right: -1.3rem; }
-      .waypoints-row { grid-template-columns: repeat(3, 1fr); }
-      .monastery-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 1.5rem; }
+      .waypoints-row { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+      .waypoint-card { padding: 0.8rem 0.4rem; }
+      .monastery-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .hero-stats { gap: 1rem; }
+      .pause-cards { grid-template-columns: 1fr; }
+      .map-embed { height: 280px; }
+      nav { padding: 0 1rem; }
+      nav a { padding: 1rem 0.6rem; font-size: 0.75rem; }
+      .gear-grid { grid-template-columns: 1fr; }
     }
-    @media (max-width: 480px) { .waypoints-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { 
+      .waypoints-row { grid-template-columns: repeat(2, 1fr); }
+      .hero-stat .val { font-size: 1.8rem; }
+      .hero-cta { flex-direction: column; width: 100%; gap: 0.8rem; }
+      .hero-cta .btn { width: 100%; justify-content: center; }
+      .emergency-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -339,7 +353,7 @@
       <div class="timeline-time">10:00</div>
       <div class="timeline-content">
         <div class="timeline-tag tag-pause" data-mk="⏸ Пауза 1" data-en="⏸ Pause 1">⏸ Пауза 1</div>
-        <h3 data-mk="Село Двориште — Напуштено (459м)" data-en="Dvorishte Village — Ghost Village (459m)">Село Двориште — Напуштено (459м)</h3>
+        <h3 data-mk="Село Двориште — Напуштено (800м)" data-en="Dvorishte Village — Ghost Village (800m)">Село Двориште — Напуштено (800м)</h3>
         <p data-mk="Пауза од 30 мин. Одмор и истражување на целосно напуштеното камено село. Историска приказна од раководителот. Фотографирање. Броење пред продолжување." data-en="30-minute stop. Rest and explore the completely abandoned stone village. Historical story from group leader. Photo opportunity. Head count before departing.">Пауза од 30 мин. Одмор и истражување на целосно напуштеното камено село. Историска приказна од раководителот. Фотографирање. Броење пред продолжување.</p>
       </div>
     </div>
@@ -348,7 +362,7 @@
       <div class="timeline-time">11:15</div>
       <div class="timeline-content">
         <div class="timeline-tag tag-pause" data-mk="⏸ Пауза 2" data-en="⏸ Pause 2">⏸ Пауза 2</div>
-        <h3 data-mk="Видиковец — Панорамски поглед (800м)" data-en="Panorama Viewpoint (800m)">Видиковец — Панорамски поглед (800м)</h3>
+        <h3 data-mk="Видиковец — Панорамски поглед (950м)" data-en="Panorama Viewpoint (950m)">Видиковец — Панорамски поглед (950м)</h3>
         <p data-mk="Пауза 20 мин. Панорамски поглед на Стоби, Вардар-Црна конфлуенција, Тиквешкиот регион. Задолжителна групна фотографија со долината во позадина." data-en="20-minute stop. Panoramic views of Stobi, Vardar-Crna confluence, Tikveš region. Mandatory group photo with the valley backdrop.">Пауза 20 мин. Панорамски поглед на Стоби, Вардар-Црна конфлуенција, Тиквешкиот регион. Задолжителна групна фотографија со долината во позадина.</p>
       </div>
     </div>
@@ -450,10 +464,10 @@
         <text x="60" y="190" fill="#7ecf9a" font-size="8" text-anchor="middle" font-family="Inter">600м</text>
         <circle cx="230" cy="170" r="7" fill="#c4a882" stroke="#0a1520" stroke-width="2"/>
         <text x="230" y="155" fill="#c4a882" font-size="9" text-anchor="middle" font-family="Outfit" font-weight="700">П1</text>
-        <text x="230" y="146" fill="#c4a882" font-size="8" text-anchor="middle" font-family="Inter">459м</text>
+        <text x="230" y="146" fill="#c4a882" font-size="8" text-anchor="middle" font-family="Inter">800м</text>
         <circle cx="460" cy="120" r="7" fill="#6bb3f5" stroke="#0a1520" stroke-width="2"/>
         <text x="460" y="110" fill="#6bb3f5" font-size="9" text-anchor="middle" font-family="Outfit" font-weight="700">П2</text>
-        <text x="460" y="101" fill="#6bb3f5" font-size="8" text-anchor="middle" font-family="Inter">800м</text>
+        <text x="460" y="101" fill="#6bb3f5" font-size="8" text-anchor="middle" font-family="Inter">950м</text>
         <circle cx="630" cy="85" r="7" fill="#f5856e" stroke="#0a1520" stroke-width="2"/>
         <text x="630" y="75" fill="#f5856e" font-size="9" text-anchor="middle" font-family="Outfit" font-weight="700">П3</text>
         <text x="630" y="66" fill="#f5856e" font-size="8" text-anchor="middle" font-family="Inter">1050м</text>
@@ -465,8 +479,8 @@
     </div>
     <div class="waypoints-row">
       <div class="waypoint-card"><div class="elev-dot" style="background:#7ecf9a;"></div><div class="elev-num">600</div><div class="elev-m">м</div><div class="elev-name" data-mk="Манастир Св. Архангел Михаил" data-en="Monastery Archangel Michael">Манастир Св. Архангел Михаил</div></div>
-      <div class="waypoint-card"><div class="elev-dot" style="background:#c4a882;"></div><div class="elev-num">459</div><div class="elev-m">м</div><div class="elev-name" data-mk="Село Двориште" data-en="Dvorishte Village">Село Двориште</div></div>
-      <div class="waypoint-card"><div class="elev-dot" style="background:#6bb3f5;"></div><div class="elev-num">800</div><div class="elev-m">м</div><div class="elev-name" data-mk="Панорамски Видиковец" data-en="Panorama Viewpoint">Панорамски Видиковец</div></div>
+      <div class="waypoint-card"><div class="elev-dot" style="background:#c4a882;"></div><div class="elev-num">800</div><div class="elev-m">м</div><div class="elev-name" data-mk="Село Двориште" data-en="Dvorishte Village">Село Двориште</div></div>
+      <div class="waypoint-card"><div class="elev-dot" style="background:#6bb3f5;"></div><div class="elev-num">950</div><div class="elev-m">м</div><div class="elev-name" data-mk="Панорамски Видиковец" data-en="Panorama Viewpoint">Панорамски Видиковец</div></div>
       <div class="waypoint-card"><div class="elev-dot" style="background:#f5856e;"></div><div class="elev-num">1050</div><div class="elev-m">м</div><div class="elev-name" data-mk="Воени Бункери" data-en="Military Bunkers">Воени Бункери</div></div>
       <div class="waypoint-card" style="border-color:rgba(212,160,23,0.4);background:rgba(212,160,23,0.08)"><div class="elev-dot" style="background:#d4a017;"></div><div class="elev-num" style="font-size:1.8rem">1150</div><div class="elev-m">м</div><div class="elev-name" data-mk="🏆 Врв Клепа" data-en="🏆 Klepa Summit">🏆 Врв Клепа</div></div>
     </div>
