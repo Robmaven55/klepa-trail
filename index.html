@@ -132,6 +132,9 @@
     }
     .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--gold); }
     h2 { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: var(--warm-white); }
+    .meta-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.4; }
+    .meta-tags span { display: inline-flex; align-items: center; }
+    .meta-tags span:not(:last-child)::after { content: '·'; margin-left: 0.8rem; opacity: 0.4; }
 
     /* ── TIMELINE ────────────────────────────── */
     #timeline { background: #0d1a12; }
@@ -256,6 +259,8 @@
       .gear-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) { 
+      .meta-tags { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+      .meta-tags span:not(:last-child)::after { display: none; }
       .waypoints-row { grid-template-columns: repeat(2, 1fr); }
       .hero-stat .val { font-size: 1.8rem; }
       .hero-cta { flex-direction: column; width: 100%; gap: 0.8rem; }
@@ -576,7 +581,11 @@
   <div class="reveal">
     <div class="section-label" data-mk="Патување со автомобил" data-en="Getting There">Патување со автомобил</div>
     <h2 data-mk="Рута од Скопје" data-en="Driving Route from Skopje">Рута од Скопје</h2>
-    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;" data-mk="~80км · ~1ч 30мин вкупно · Поаѓање во 06:30" data-en="~80km · ~1h 30min total · Depart 06:30">~80км · ~1ч 30мин вкупно · Поаѓање во 06:30</p>
+    <div class="meta-tags">
+      <span data-mk="~80км" data-en="~80km">~80км</span>
+      <span data-mk="~1ч 30мин вкупно" data-en="~1h 30min total">~1ч 30мин вкупно</span>
+      <span data-mk="Поаѓање во 06:30" data-en="Depart 06:30">Поаѓање во 06:30</span>
+    </div>
   </div>
   <div class="route-steps reveal">
     <div class="route-step"><div class="step-num">1</div><div class="step-text"><strong data-mk="Скопје → Автопат А1/Е75 (Југ)" data-en="Skopje → A1/E75 Motorway (South)">Скопје → Автопат А1/Е75 (Југ)</strong><p data-mk="Одете на југ по автопатот А1 кон Велес / Гевгелија" data-en="Head south on the A1 motorway toward Veles / Gevgelija">Одете на југ по автопатот А1 кон Велес / Гевгелија</p></div></div>
@@ -602,7 +611,11 @@
   <div class="reveal">
     <div class="section-label" data-mk="База на кампот" data-en="Base Camp">База на кампот</div>
     <h2 data-mk="Манастир Архангел Михаил" data-en="Monastery Archangel Michael">Манастир Архангел Михаил</h2>
-    <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;" data-mk="Изграден 1861 · ГПС: 41.5637° С, 21.8656° И · Горно Чичево, Градско" data-en="Built 1861 · GPS: 41.5637° N, 21.8656° E · Gorno Chichevo, Gradsko">Изграден 1861 · ГПС: 41.5637° С, 21.8656° И · Горно Чичево, Градско</p>
+    <div class="meta-tags">
+      <span data-mk="Изграден 1861" data-en="Built 1861">Изграден 1861</span>
+      <span data-mk="ГПС: 41.5637° С, 21.8656° И" data-en="GPS: 41.5637° N, 21.8656° E">ГПС: 41.5637° С, 21.8656° И</span>
+      <span data-mk="Горно Чичево, Градско" data-en="Gorno Chichevo, Gradsko">Горно Чичево, Градско</span>
+    </div>
   </div>
   <div class="monastery-grid reveal">
     <div class="info-card">
